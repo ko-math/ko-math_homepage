@@ -114,7 +114,7 @@ details {
     padding:8p;
 }
 a{
-    color: #7f7fff; /* 文字色 */
+    color: #6a5acd; /* 文字色 */
     text-decoration: none; /* 下線を消す（必要に応じて） */
     transition: 0.3s; /* ホバー時の変化を滑らかに */
 }
