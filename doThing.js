@@ -10,7 +10,6 @@ async function aboutMe(){
     wrapper.classList.add("aboutMe");
 
     wrapper.innerHTML = `
-        <h2>${data.username}</h2>
         <img src="${data.profile.images["90x90"]}">
         <p>${data.profile.bio.replace(/\n/g,'<br>') || ""}</p>
         <p>Country: ${data.profile.country || ""}</p>
