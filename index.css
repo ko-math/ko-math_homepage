@@ -75,7 +75,7 @@ details {
 }
 
 .dialog[open] .dialog_body {
-  max-height: 1700px;
+  max-height: 2500px;
 }
 
 .dialog{
