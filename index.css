@@ -137,8 +137,7 @@ a:hover{
     gap: 50px;
 }
 .long-logo{
-  position: relative;
-  top: -10px;
+    vertical-align: 5px;
 }
 
 
