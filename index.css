@@ -136,7 +136,7 @@ a:hover{
 .logo:hover{
   opacity:1;
 }
-.logo{  
+.logos{  
     display: flex;
     justify-content:flex-start;   
     align-items:center;   
