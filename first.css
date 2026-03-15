@@ -64,6 +64,12 @@ input{
     border-color:#cc5500;
     box-shadow:0 0 8px #cc5500;
 }
+input:focus:focus{
+    outline:none;
+    border-color:#cc5500;
+    box-shadow:0 0 8px #cc5500;/*ここ*/
+}
+
 
 .p{
     font-size:50px;
