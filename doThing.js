@@ -51,8 +51,8 @@ async function doThing() {
     document.getElementById('doThingApi').appendChild(wrapper);
 }
 
-const inputDoThing =document.getElementById('doThingButton');
-inputDoThing.addEventListener("click",doThing);
+const inputDoThing =document.getElementById('doThingCount');
+inputDoThing.addEventListener("change",doThing);
 
 
 function sendHeight() {
