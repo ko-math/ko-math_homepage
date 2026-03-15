@@ -122,6 +122,15 @@ a:hover{
     color: red;
     text-decoration: underline;
 }
+.logo{
+  opacity:0.5;
+  transition:0.3s;
+}
+
+.logo:hover{
+  opacity:1;
+}
+
 
 body{
     background-color:#bcddff;
