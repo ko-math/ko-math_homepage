@@ -136,5 +136,9 @@ a:hover{
     align-items:center;       /* 高さを揃える */
     gap: 50px;
 }
+.long-logo{
+  position: relative;
+  top: -10px;
+}
 
 
