@@ -132,9 +132,9 @@ a:hover{
 }
 .logo{  
     display: flex;
-    justify-content: center;   /* 横中央 */
-    align-items: ;       /* 高さを揃える */
-    gap: 20px;
+    justify-content:flex-start;   /* 横中央 */
+    align-items:center;       /* 高さを揃える */
+    gap: 50px;
 }
 
 
