@@ -1,5 +1,5 @@
 async function aboutMeApi(){
-    const res = await fetch("https://corsproxy.io/?https://api.scratch.mit.edu/users/ko-math/");
+    const res = await fetch("https://api.scratch.mit.edu/users/ko-math/");
     return await res.json();
 }
 
