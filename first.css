@@ -66,8 +66,8 @@ input{
 }
 input:focus{
     outline:none;
-    border-color:#ffff93;
-    box-shadow:0 0 8px #ffff93;/*ここ*/
+    border-color:#ffff8f;
+    box-shadow:0 0 8px #ffff8f;/*ここ*/
 }
 
 
