@@ -1,5 +1,5 @@
 async function aboutMeApi(){
-    const res = await fetch("https://api.allorigins.win/raw?url=" + encodeURIComponent("https://api.scratch.mit.edu/users/ko-math/"));
+    const res = await fetch("https://ko-math-about.komath.workers.dev");
     return await res.json();
 }
 
