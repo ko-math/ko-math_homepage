@@ -32,6 +32,28 @@
             <p>標準入力</p>
             <input type="text" id="inputStrBF" placeholder="ex.hello">
         </div>
+        
+        <p class ="p">より複雑な計算</p>
+        <ul>
+            <li>dif(微分) ,int(積分),calc(計算),solve(根) が使えます。</li>
+            <li>範囲にはintでは積分範囲、solveでは根のある程度の範囲を配列形式で入力してください</li>
+        </ul>
+        <div id="inputComplex">
+            <p>式を入力</p>
+            <input id="compFormula" placeholder="ex.x^2"></input>
+            <br>            
+            <p>演算名を入力</p>
+            <input id="compOpe" placeholder="ex.dif"></input>
+            <br>
+            <p>変数の名前&値</p><sup>名前と値をオブジェクト形式で入力</sup>
+            <input type="text" id="compVar" placeholder="ex.{x:613,y:905}">
+            <br>
+            <p>変数の名前</p><sup>微分する変数、積分する変数、求める変数。calcの場合入力なしでも可</sup>
+            <input type="text" id="compVarName" placeholder="ex.x">
+            <br>
+            <p>範囲</p>
+            <input type="text" id="compRange" placeholder="ex.{x:613,y:905}">
+        </div>
         <br>
         <h4>by ko-math</h4>
         <script src="./ko_math.js"></script>
