@@ -40,7 +40,7 @@ async function doThingApi(n) {
     html = html.replace(/(href|src)="\//g, 'href="https://scratch.mit.edu/');
     return html;
 }
-/*
+
 async function doThing() {
     document.querySelectorAll('.doThingElement').forEach(el => el.remove());
     
@@ -54,9 +54,9 @@ async function doThing() {
     });
     document.getElementById('doThingApi').appendChild(wrapper);
 }
-*/
+/*
 const inputDoThing =document.getElementById('doThingCount');
-/*inputDoThing.addEventListener("change",doThing);*/
+inputDoThing.addEventListener("change",doThing);*/
 doThing();
 
 
