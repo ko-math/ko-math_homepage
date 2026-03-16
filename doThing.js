@@ -40,12 +40,12 @@ async function doThingApi(n) {
     html = html.replace(/(href|src)="\//g, 'href="https://scratch.mit.edu/');
     return html;
 }
-
+/*
 async function doThing() {
     document.querySelectorAll('.doThingElement').forEach(el => el.remove());
     
     const count =document.getElementById('doThingCount').value;
-    const doThing = await doThingApi(20); /*←countに変えても良し*/
+    const doThing = await doThingApi(20); ←countに変えても良し
     const wrapper = document.createElement('div');
     wrapper.classList.add('doThingElement');
     wrapper.innerHTML = doThing;
@@ -54,9 +54,11 @@ async function doThing() {
     });
     document.getElementById('doThingApi').appendChild(wrapper);
 }
-
+*/
 const inputDoThing =document.getElementById('doThingCount');
-inputDoThing.addEventListener("change",doThing);
+/*inputDoThing.addEventListener("change",doThing);*/
+doThing();
+
 
 // DOMが変わったら毎回
 /*
@@ -64,6 +66,7 @@ new MutationObserver(sendHeight)
   .observe(document.body, {
     childList: true,
     subtree: true
+    
 });
 */
 
