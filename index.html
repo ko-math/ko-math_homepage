@@ -19,7 +19,11 @@
         </style>
     </head>
     <body>
-        <header id="header">
+        <header>
+            <a href="#link">相互リンク</a>
+        </header>
+        
+        <div id="header">
             <!--
             <div class="photo">
                 <img src="./code.png">
@@ -27,7 +31,7 @@
             </div>
             -->
             <p>ko-math's homepage</p>
-        </header>
+        </div>
         <div id="introduction">
                 <p>
                 こんにちは、ko-mathです！<br>
@@ -45,7 +49,7 @@
                 ※このホームページのJS、HTMlの9割、CSSの5割は僕で、残りはchatGPTによります。
                 </p>
         </div>
-        <details class="dialog">
+        <details class="dialog" id="js">
             <summary>JavaScript</summary>
             <p class="center">JSの練習がてら作ったものです</p>
             <div class="dialog_body">
@@ -69,7 +73,7 @@
           </div>
         </details>
         
-        <details class="dialog">
+        <details class="dialog" id="do">
           <summary>活動</summary>
             <p class="center">Scratchに書いている自己紹介などです</p>
             <div class="dialog_body">
@@ -77,7 +81,7 @@
             </div>
         </details>
         
-        <details class="dialog">
+        <details class="dialog" id="link">
           <summary>相互リンク</summary>
             <p class="center">相互リンクです</p>
             <div class="dialog_body">
@@ -89,7 +93,7 @@
             </div>
         </details>
         
-        <details class="dialog">
+        <details class="dialog" id="history">
           <summary>履歴</summary>
             <p class="center">アップロード履歴</p>
             <div class="dialog_body">
