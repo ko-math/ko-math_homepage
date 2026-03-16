@@ -427,9 +427,10 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
         case 'dif':
             h = 0.0000000001;
             newVar[variable_name]= Number(variable[variable_name]) + h;
-            value1 = complexCalc(Formula,variable);
+            value1 = complexCalc(Formula,newVar);
+            newVar[variable_name]= Number(variable[variable_name]) - h;
             value2 = complexCalc(Formula,newVar);
-            ans = (value2 - value1)/h;
+            ans = (value2 - value1)/2h;
             break;
         case 'int':
             h = 0.01;
