@@ -459,14 +459,14 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
             break;        
         case 'sum':
             ans = 0;
-            for(let i = range[0];i < range[1];i++){
+            for(let i = range[0];i < (range[1] + 1);i++){
                 newVar[variable_name]= i;
                 ans += complexCalc(Formula,newVar);
             }
             break;        
         case 'prod':
             ans = 1;
-            for(let i = range[0];i < range[1];i++){
+            for(let i = range[0];i < (range[1] + 1);i++){
                 newVar[variable_name]= i;
                 ans *= complexCalc(Formula,newVar);
             }
