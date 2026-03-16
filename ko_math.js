@@ -421,16 +421,18 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
     let ans = 'error' ;
     let value1;
     let value2;
-    const h = 0.01;
+    let h;
     const newVar = {...variable}; //shallow
     switch (ope){
         case 'dif':
+            h = 0.0000000001;
             newVar[variable_name]= Number(variable[variable_name]) + h;
             value1 = complexCalc(Formula,variable);
             value2 = complexCalc(Formula,newVar);
             ans = (value2 - value1)/h;
             break;
         case 'int':
+            h = 0.01;
             value1 = 0;
             console.log(range);
             for (let i = range[0];i <= range[1] ;i += h){
@@ -459,7 +461,3 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
     }
     return ans
 }
-console.log(functionary('int' , 'x^2' ,{x:60,y:10},'x',[0,1]));
-console.log(functionary('dif' , 'x^2' ,{x:60,y:10},'x',[0,1]));
-console.log(functionary('calc' , 'x^2' ,{x:60,y:10},'x',[0,1]) );
-console.log(functionary('solve' , 'x^2-x-1' ,{x:0,y:10},'x',[1,3]) );
