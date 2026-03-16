@@ -52,7 +52,8 @@ function calc(calc){
     }
     euler -=Math.log(100000);
     addConst('euler',euler);
-    //定数を書く際@を最後につけること
+    //定数を書く際#を最後につけること。
+    
     for (let i = 0;i < Formula.length;i++){
         if ((Formula[i] == ')' && (num.includes(Formula[i + 1]) || '('.includes(Formula[i + 1]))) || (num.includes(Formula[i]) && Formula[i+1] == '(')  || (num.includes(Formula[i]) && ope2f.includes(Formula[i+1])) || (num.includes(Formula[i]) && constantf.includes(Formula[i+1]))  )  {
             const before = Formula.slice(0 , i+1);
@@ -283,10 +284,6 @@ function calc(calc){
                 case 'rand':
                     stack.push(Math.random());
                     break;
-                case 'pi':
-                    stack.push(num1);
-                    stack.push(Math.PI);
-                    break;
                     //default処理
                 default :
                     stack.push('error');
@@ -425,7 +422,7 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
     const newVar = {...variable}; //shallow
     switch (ope){
         case 'dif':
-            h = 0.000001;
+            h = 0.00001;
             newVar[variable_name]= Number(variable[variable_name]) + h;
             value1 = complexCalc(Formula,newVar);
             newVar[variable_name]= Number(variable[variable_name]) - h;
@@ -459,14 +456,14 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
             break;        
         case 'sum':
             ans = 0;
-            for(let i = range[0];i < (range[1] + 1);i++){
+            for(let i = range[0];i <= range[1];i++){
                 newVar[variable_name]= i;
                 ans += complexCalc(Formula,newVar);
             }
             break;        
         case 'prod':
             ans = 1;
-            for(let i = range[0];i < (range[1] + 1);i++){
+            for(let i = range[0];i <= range[1];i++){
                 newVar[variable_name]= i;
                 ans *= complexCalc(Formula,newVar);
             }
@@ -476,3 +473,55 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
     }
     return ans
 }
+
+//matrix1,matrx2は配列形式
+function matrix(matrix1,n1,m1,ope,matrix2,n2,m2){
+    const matA = matrix1;
+    const matB = matrix2;
+    const ansmat = [];
+    const ans = [];
+    switch (ope){
+        case '+':
+            if ((n1 == n2) &&(m1 == m2)){
+                for (let i = 0;i < (n1 * m1);i++){
+                    ansmat.push(matA[i] + matB[i]);
+                }
+            }  else {
+                error();
+            }
+            break;
+            
+        case '-':
+            if ((n1 == n2) &&(m1 == m2)){
+                for (let i = 0;i < (n1 * m1);i++){
+                    ansmat.push(matA[i] - matB[i]);
+                }
+            }  else {
+                error();
+            }
+            break;
+            
+        case '*':
+            if (n2 == m1){
+                //掛け算
+            }  else {
+                error();
+            }
+            break;
+            //default
+        default:
+            break;
+    }
+}
+function error(){
+    console.log('error');
+}
+//多倍長を作る
+//BF高速化
+//機能追加
+//円周率計算
+//二階微分
+//複素数
+//行列←That
+//AI
+console.log(ko_math.e);
