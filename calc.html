@@ -12,11 +12,11 @@
     <body>
         <p class ="p">電卓(calculator)</p>
         <ul>
-            <li>定数は#を最後につけてください。pi#,e#,tau#,phi#が使用可能です。</li>
+            <li>定数は@を最後につけてください。pi@,e@,tau@,phi@が使用可能です。</li>
             <li>関数はsin,cos,tan,sqrt,max,min,exp,ln,log,round,floor,ceil,asin,acos,atan,factが使用可能です。特殊値としてrandも括弧付きで使用できます。<br>演算子は、+,-,*,/,^,%が使用可能です。()も使用可能です。</li>
         </ul>
         <div id="inputFormula">
-            <input type="text" id="formula" placeholder="ex. round((sin(pi#*2)+ln(e#))*(5+phi#))">
+            <input type="text" id="formula" placeholder="ex. round((sin(pi@*2)+ln(e@))*(5+phi@))">
         </div>
         
         <p class ="p">BrainFインタプリタ</p>
@@ -36,7 +36,7 @@
         <p class ="p">より複雑な計算</p>
         <ul>
             <li>dif(微分) ,int(積分),calc(計算),solve(根) が使えます。</li>
-            <li>範囲にはintでは積分範囲、solveでは根のある程度の範囲を配列形式で入力してください</li>
+            <li>絶対にすべて入力してください。</li>
         </ul>
         <div id="inputComplex">
             <p>式を入力</p>
@@ -45,14 +45,14 @@
             <p>演算名を入力</p>
             <input id="compOpe" placeholder="ex.dif">
             <br>
-            <p>変数の名前&値</p><sup>名前と値をオブジェクト形式で入力</sup>
-            <input type="text" id="compVar" placeholder="ex.{x:613,y:905}">
+            <p>変数の名前&値</p><sup>名前と値をJSON形式で入力</sup>
+            <input taype="text" id="compVar" placeholder="ex.{&quot; x &quot; :613, &quot; y &quot; :905}">
             <br>
-            <p>変数の名前</p><sup>微分する変数、積分する変数、求める変数。calcの場合入力なしでも可</sup>
+            <p>変数の名前</p><sup>微分する変数、積分する変数、求める変数。</sup>
             <input type="text" id="compVarName" placeholder="ex.x">
             <br>
-            <p>範囲</p>
-            <input type="text" id="compRange" placeholder="ex.{x:613,y:905}">
+            <p>範囲</p><sup>intでは積分範囲、solveでは根のある程度の範囲を配列形式で入力してください</sup>
+            <input type="text" id="compRange" placeholder="ex.[0,1]">
             <br>
             <input type="button" value="Run" id="compRun">
         </div>
