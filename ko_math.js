@@ -10,7 +10,7 @@ window.ko_math = {
     brainf : function (code,input,cellbit,EOF){
         return BrainF(code,input,cellbit,EOF);
     },
-    functionary : function (ope , Formula ,variable,variable_name ,range);
+    functionary : function (ope , Formula ,variable,variable_name ,range){
         return functionary(ope , Formula ,variable,variable_name ,range);
     }
 };
