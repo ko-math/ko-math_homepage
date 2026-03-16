@@ -10,12 +10,14 @@ window.ko_math = {
     brainf : function (code,input,cellbit,EOF){
         return BrainF(code,input,cellbit,EOF);
     },
-    
+    functionary : function (ope , Formula ,variable,variable_name ,range);
+        return functionary(ope , Formula ,variable,variable_name ,range);
+    }
 };
 
 
-function calc(calc){ 
-    const formula = calc;
+function calc(calc){
+    let Formula = calc;
     const num = ['0','1','2','3','4','5','6','7','8','9','.'];
     const ope1 = ['+','-','*','/','%','^'];//演算子
     const opeRank = [0,0,1,1,1,1];
@@ -36,17 +38,29 @@ function calc(calc){
     addOpe2('atan');
     addOpe2('fact');
     addOpe2('rand');
-    const constant = [];//定数
-    const constantf =[];
-    const constantValue = [];//定数
+    addOpe2('pi');
+    const constant = {};//定数
+    const constantf =[];//定数
     addConst('pi',Math.PI);
     addConst('tau',2*Math.PI);
     addConst('e',Math.E);
     addConst('phi',(1+Math.sqrt(5))/2 );
 
+    let euler = 0
+    for (let i = 1;i < 100000;i++){
+        euler += 1/i;
+    }
+    euler -=Math.log(100000);
+    addConst('euler',euler);
     //定数を書く際@を最後につけること
-
-
+    for (let i = 0;i < Formula.length;i++){
+        if ((Formula[i] == ')' && (num.includes(Formula[i + 1]) || '('.includes(Formula[i + 1]))) || (num.includes(Formula[i]) && Formula[i+1] == '(')  || (num.includes(Formula[i]) && ope2f.includes(Formula[i+1])) || (num.includes(Formula[i]) && constantf.includes(Formula[i+1]))  )  {
+            const before = Formula.slice(0 , i+1);
+            const after = Formula.slice(i+1 , Formula.length);
+            Formula = before + '*' + after;
+        }
+    }
+    const formula = Formula;
     const formulaList = [];
 
     let token = '';
@@ -82,12 +96,12 @@ function calc(calc){
                     formulaList.push(func);
                 }
                 if (i_ >= formula.length){
-                    i = isThisConst(i , '@');
+                    i = isThisConst(i , '#');
                 } else {
                     i = i_ - 1;
                 }
             } else if (constantf.includes(char)){
-                i = isThisConst(i , '@');
+                i = isThisConst(i , '#');
             }
             if (isMinus == 0){
                 token = '';
@@ -167,8 +181,7 @@ function calc(calc){
     //addConst関数。定数とその値を追加します。Math.PIとかも使用可能
     function addConst(constantName , constValue){
         constantf.push(constantName.charAt(0));
-        constant.push(constantName);
-        constantValue.push(constValue);
+        constant[constantName]=constValue;
     }
     
     //ope関数。引数opeによってスタックから抽出
@@ -252,7 +265,6 @@ function calc(calc){
                     stack.push(Math.min(num1,num2));
                     break;
                 case 'asin':
-                    console.log(num1);
                     stack.push(180/Math.PI*Math.asin(num1));
                     break;
                 case 'acos':
@@ -271,6 +283,10 @@ function calc(calc){
                 case 'rand':
                     stack.push(Math.random());
                     break;
+                case 'pi':
+                    stack.push(num1);
+                    stack.push(Math.PI);
+                    break;
                     //default処理
                 default :
                     stack.push('error');
@@ -281,13 +297,15 @@ function calc(calc){
     function isThisConst(i,spe) {
         let i_ = i;
         let value ='';
+        
         while (formula.charAt(i_) != spe && i_ < formula.length){
             value = value + formula.charAt(i_);
             i_++;
         }
+        
     
-        if (constant.includes(value) ){
-            formulaList.push(constantValue[constant.indexOf(value)]);
+        if (constant.hasOwnProperty(value) ){
+            formulaList.push(constant[value]);
         }
         return (i_ - 1);
     }
@@ -387,3 +405,61 @@ function jumpTableAdd(code){
         return table
     }
 }
+
+//微分・積分
+
+function complexCalc(Formula ,variable){ //variableはオブジェクト形式で。
+    let formula = Formula;
+    for (const vari in variable){
+        formula = formula.replaceAll(vari,'(' + variable[vari] + ')'); 
+    }
+    formula = calc(formula);
+    return formula
+}
+
+function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,int Formula→式 variable→変数オブジェクト range→(積分)範囲配列
+    let ans = 'error' ;
+    let value1;
+    let value2;
+    const h = 0.01;
+    const newVar = {...variable}; //shallow
+    switch (ope){
+        case 'dif':
+            newVar[variable_name]= Number(variable[variable_name]) + h;
+            value1 = complexCalc(Formula,variable);
+            value2 = complexCalc(Formula,newVar);
+            ans = (value2 - value1)/h;
+            break;
+        case 'int':
+            value1 = 0;
+            console.log(range);
+            for (let i = range[0];i <= range[1] ;i += h){
+                newVar[variable_name] = i;                
+                const f_a = complexCalc(Formula,newVar);
+                newVar[variable_name] = i + h;
+                const f_b = complexCalc(Formula,newVar);
+                value1 += (f_a+f_b)*h/2
+                
+            }
+            ans = value1;
+            break;
+        case 'calc': 
+            ans = complexCalc(Formula,variable);
+            break;
+        case 'solve':
+            ans = (range[0]+range[1])/2;
+            for(let i = 0;i < 10;i++){
+                newVar[variable_name]= ans;
+                ans = ans - complexCalc(Formula,newVar)/functionary('dif',Formula,newVar,variable_name,'');//解の範囲をrangeで指定
+            }
+            
+            break;
+        default:
+            break;
+    }
+    return ans
+}
+console.log(functionary('int' , 'x^2' ,{x:60,y:10},'x',[0,1]));
+console.log(functionary('dif' , 'x^2' ,{x:60,y:10},'x',[0,1]));
+console.log(functionary('calc' , 'x^2' ,{x:60,y:10},'x',[0,1]) );
+console.log(functionary('solve' , 'x^2-x-1' ,{x:0,y:10},'x',[1,3]) );
