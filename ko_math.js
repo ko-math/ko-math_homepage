@@ -456,6 +456,20 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
                 ans = ans - complexCalc(Formula,newVar)/functionary('dif',Formula,newVar,variable_name,'');//解の範囲をrangeで指定
             }
             
+            break;        
+        case 'sum':
+            ans = 0;
+            for(let i = range[0];i < range[1];i++){
+                newVar[variable_name]= i;
+                ans += complexCalc(Formula,newVar);
+            }
+            break;        
+        case 'prod':
+            ans = 1;
+            for(let i = range[0];i < range[1];i++){
+                newVar[variable_name]= i;
+                ans *= complexCalc(Formula,newVar);
+            }
             break;
         default:
             break;
