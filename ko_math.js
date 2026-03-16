@@ -1,8 +1,8 @@
 window.ko_math = {
-    pi: calc('pi@') ,
-    e: calc('e@') ,
-    tau: calc('tau@') ,
-    phi: calc('phi@') ,
+    pi: calc('pi#') ,
+    e: calc('e#') ,
+    tau: calc('tau#') ,
+    phi: calc('phi#') ,
     
     formula : function (formula){
         return calc(formula);
