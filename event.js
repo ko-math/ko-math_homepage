@@ -48,3 +48,20 @@ inputBF.addEventListener('change' , function (){
     inputDiv.append(output);
 
 });
+
+
+const inputFormula = document.querySelector('#compRun');
+inputFormula.addEventListener('click' , function (){
+    const delList = document.querySelectorAll('.outputCompFormula');
+    for (const del of delList) {
+        del.remove();
+    }
+    const formula = inputFormula.value;
+    const ans = ko_math.formula(formula);
+    const inputDiv = document.querySelector('#inputFormula');
+    const output = document.createElement('p');
+    output.textContent = ans;
+    output.classList.add('outputCompFormula');
+    inputDiv.append(output);
+});
+
