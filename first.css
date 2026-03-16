@@ -12,7 +12,7 @@ body,input,textarea {
     font-size:30px;
     font-weight:500;
 }
-input{
+.#inputComplex{
     font-size:20px;
     border-radius:15px;
     font-weight:500;
