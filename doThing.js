@@ -45,7 +45,7 @@ async function doThing() {
     document.querySelectorAll('.doThingElement').forEach(el => el.remove());
     
     const count =document.getElementById('doThingCount').value;
-    const doThing = await doThingApi(20); ←countに変えても良し
+    const doThing = await doThingApi(20); /*←countに変えても良し*/
     const wrapper = document.createElement('div');
     wrapper.classList.add('doThingElement');
     wrapper.innerHTML = doThing;
