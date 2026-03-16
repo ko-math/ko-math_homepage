@@ -16,6 +16,12 @@ iframe{
     display:flex;
     justify-content:center;
 }
+header{
+    font-size:70px;
+    display:fixed;
+    justify-content:center;
+}
+
 .js_p{
     font-size:30px;
     display:flex;
