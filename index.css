@@ -1,4 +1,9 @@
-iframe{
+.JSiframe{
+    width:1300px;
+    height:2000px;
+    border:0;
+}
+.doiframe{
     width:1300px;
     height:1500px;
     border:0;
