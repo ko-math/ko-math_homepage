@@ -135,7 +135,8 @@ h3{
     width:50%    
 }
 .center.p-that{
-    margin: -0.25em;
+    margin: -0.5em;
+    background-color:#f4f9ff;
 }
 ul {
   padding-left: 0;
