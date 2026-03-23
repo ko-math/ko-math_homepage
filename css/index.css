@@ -129,12 +129,12 @@ h3{
     justify-content:center;
     background-color:white;
     padding: 8px;
+    border-radius:10px;
 }
-.pCenter{
-    display: flex;
-    justify-content: center;
-    background-color: #f4f9ff;
-    padding: 8px;
+.center.small{
+    width:50%    
+}
+.center.p-that{
     margin: -0.25em;
 }
 ul {
