@@ -469,12 +469,27 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
             }
             break;
         case 'graph';
-            graph(Formula,newVar,);
+            graph(Formula,newVar,variable_name,range,10);
             break;
         default:
             break;
     }
     return ans
+}
+
+//graph関数
+function graph(formula,variable,name,range,dot){
+    const canvas = document.querySelector('#graph');
+    const ctx = canvas.getContext('2d');
+    let startX = range[0];
+    let endX = range[1];
+    for(let i = startX;i < endX;i += 1/dot){
+        ctx.beginPath();
+        ctx.moveTo();
+        ctx.lineTo();
+        ctx.lineWidth = 5;
+        ctx.stroke();
+    }
 }
 
 //matrix1,matrx2は配列形式
