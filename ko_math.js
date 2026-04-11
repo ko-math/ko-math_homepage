@@ -468,7 +468,7 @@ function functionary(ope , Formula ,variable,variable_name ,range){ //ope→dif,
                 ans *= complexCalc(Formula,newVar);
             }
             break;
-        case 'graph';
+        case 'graph':
             graph(Formula,newVar,variable_name,range,10);
             break;
         default:
