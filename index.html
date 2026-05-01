@@ -142,26 +142,26 @@
             links('https://ko-math.f5.si','ko-math','このページ');
             
             function links(link,name,introduction){
-                const link = document.querySelector('#links');
+                const linkTag = document.querySelector('#links');
                 const a = document.createElement('a');
                 a.href = `https://${link}`;
                 a.innerHTML = `
                 <img src="https://www.google.com/s2/favicons?domain=https://${link}" width="80">
                 `;
-                link.append(a);
+                linkTag.append(a);
                 
                 const h2 = document.createElement('h2');
                 h2.innerHTML = `
                   <a href="https://${link}">${name}さん</a>  
                 `;
-                link.append(h2);
+                linkTag.append(h2);
 
                 const br = document.createElement('br');
-                link.append(br);
+                linkTag.append(br);
 
                 const p = document.createElement('p');
                 p.innerHTML = introduction;
-                link.append(p);
+                linkTag.append(p);
             }
         </script>
     </body>
